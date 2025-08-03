@@ -1,6 +1,6 @@
-### Migration_RadAdmin.exe  
+### Migration_Admin.exe  
 
-Download Migration_RadAdmin.exe and "Skyview-Services-x.x.xxx.msi" to the same directory on target computer.  
+Download Migration_Admin.exe and "Skyview-Services-x.x.xxx.msi" to the same directory on target computer.  
   
 > Hit "Start Migration":
 >
@@ -14,4 +14,4 @@ Download Migration_RadAdmin.exe and "Skyview-Services-x.x.xxx.msi" to the same d
 > - Renames current user to "Radianse"  
 > - Removes password from user "Radianse"  
 
-Once finished exit the exe and delete Migration_RadAdmin.exe from the target computer.  
+Once finished exit the exe and delete Migration_Admin.exe from the target computer.  
