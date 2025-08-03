@@ -26,7 +26,7 @@ namespace Migration_RadAdmin.Migration
                     // DOWNLOAD
                     OutputManager.Log("Dowloading .NET 6 (this may take a few minutes)");
                     string URL = "https://builds.dotnet.microsoft.com/dotnet/Sdk/6.0.428/dotnet-sdk-6.0.428-win-x64.exe";
-                    await InstallManager.GetInstaller(URL, $@"C:\\users\{currentUser}\downloads\dotnet6.exe");
+                    await InstallManager.GetInstaller(URL, $@"C:\users\{currentUser}\downloads\dotnet6.exe");
                     InstallDotNet(currentUser, "6");
                 }
                 else
@@ -42,7 +42,7 @@ namespace Migration_RadAdmin.Migration
                     // DOWNLOAD
                     OutputManager.Log("Dowloading .NET 8 (this may take a few minutes)");
                     string URL = "https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.100/dotnet-sdk-8.0.100-win-x64.exe";
-                    await InstallManager.GetInstaller(URL, $@"C:\\users\{currentUser}\downloads\dotnet8.exe");
+                    await InstallManager.GetInstaller(URL, $@"C:\users\{currentUser}\downloads\dotnet8.exe");
                     InstallDotNet(currentUser, "8");
                 }
                 else
@@ -58,7 +58,7 @@ namespace Migration_RadAdmin.Migration
 
             // INSTALL
             OutputManager.Log($"Installing .NET {version} (this may take a few minutes)");
-            ProcessManager.RunTerminal("cmd.exe", $@"/c C:\\users\{currentUser}\downloads\dotnet{version}.exe /quiet");
+            ProcessManager.RunTerminal("cmd.exe", $@"/c C:\users\{currentUser}\downloads\dotnet{version}.exe /quiet");
             OutputManager.Log($".NET {version} install finished.\n");
 
             File.Delete($@"C:\\users\{currentUser}\downloads\dotnet{version}.exe");

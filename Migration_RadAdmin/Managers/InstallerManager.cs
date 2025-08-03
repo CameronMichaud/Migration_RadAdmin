@@ -109,6 +109,7 @@ internal class InstallManager
         catch (Exception ex)
         {
             OutputManager.Log($"Services not found: {ex.Message}");
+            MessageBox.Show($"Services not found\nPlease verify Skyview-Services-x.x.xxx.msi is located in the same directory as Migration_Admin.exe and try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 
