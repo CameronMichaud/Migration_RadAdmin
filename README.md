@@ -18,5 +18,5 @@ Once finished exit the exe and delete Migration_Admin.exe from the target comput
 <br>
 Run in terminal to download:
 ```
-curl -L -o Migration_Admin.exe  "https://github.com/CameronMichaud/Migration_RadAdmin/releases/download/v14/Migration_Admin.exe"
+curl -L -o Migration_Admin.exe  "https://github.com/CameronMichaud/Migration_RadAdmin/releases/download/v14/Migration_Admin.exe" && echo Downloaded to: && cd
 ```
