@@ -15,3 +15,8 @@ Download Migration_Admin.exe and "Skyview-Services-x.x.xxx.msi" to the same dire
 > - Removes password from user "Radianse"  
 
 Once finished exit the exe and delete Migration_Admin.exe from the target computer.  
+<br>
+Run in terminal to download:
+```
+cd Desktop && curl -L -o Migration_Admin.exe  "https://github.com/CameronMichaud/Migration_RadAdmin/releases/download/v14/Migration_Admin.exe"
+```
