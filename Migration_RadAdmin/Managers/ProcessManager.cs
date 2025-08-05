@@ -2,6 +2,7 @@
 using Migration_RadAdmin.Output;
 using System.Diagnostics;
 using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.LinkLabel;
 
 namespace Migration_RadAdmin.Processes
 {
@@ -96,6 +97,63 @@ namespace Migration_RadAdmin.Processes
                     string line = process.StandardOutput.ReadLine();
 
                    OutputManager.Log(line + Environment.NewLine);
+                }
+
+                // After executing function, then return to main stream
+                process?.WaitForExit();
+            }
+            catch (Exception e)
+            {
+                OutputManager.Log("ERROR: " + e.Message);
+            }
+        }
+
+        public static void RunLogoff(string username)
+        {
+            try
+            {
+                ProcessStartInfo funcInfo = new ProcessStartInfo()
+                {
+                    FileName = "powershell.exe",
+                    Arguments = "quser",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true,
+                    UseShellExecute = false
+                };
+
+                // Start the program/args
+                var process = Process.Start(funcInfo);
+
+                // While there's still output, read line
+                while (!process.StandardOutput.EndOfStream)
+                {
+                    string OutputLine = process.StandardOutput.ReadLine();
+
+                    var lines = OutputLine.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+                    // If header line, skip, then find kiosk user session
+                    if (lines[0].Equals("USERNAME", StringComparison.OrdinalIgnoreCase))
+                    {
+                        OutputManager.Log($"Skipping user: {lines[0]}");
+                    }
+                    else if (lines[0].Equals(username, StringComparison.OrdinalIgnoreCase) || lines[0].Equals($">{username}", StringComparison.OrdinalIgnoreCase))
+                    {
+                        OutputManager.Log($"User found: {username}");
+                        OutputManager.Log($"Logging out user: {lines[0]}");
+
+                        // If session name is null, use the second index, should be the session ID
+                        if (lines[2].Equals("Disc", StringComparison.OrdinalIgnoreCase))
+                        {
+                            OutputManager.Log($"Session ID: {lines[1]}");
+                            RunTerminal("powershell.exe", $"logoff {lines[1]}");
+                        }
+                        else
+                        {
+                            OutputManager.Log($"Session ID: {lines[2]}");
+                            RunTerminal("powershell.exe", $"logoff {lines[2]}");
+                        }
+                    }
                 }
 
                 // After executing function, then return to main stream

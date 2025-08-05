@@ -78,6 +78,7 @@ namespace Migration_RadAdmin.Migration
                 }
                 else
                 {
+                    UserManager.LogoutUser("Kiosk");
                     UserManager.DeleteUser("Kiosk");
                     OutputManager.setProgress(form.userProgress, 50);
                     UserManager.RemoveUserPassword(currentUser);
