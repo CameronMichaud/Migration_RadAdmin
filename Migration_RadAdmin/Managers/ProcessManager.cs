@@ -49,6 +49,8 @@ namespace Migration_RadAdmin.Processes
 
                     foreach (string file in files)
                     {
+                        if (file.EndsWith(".ini")) { continue; } // Skip .ini files, save desktop.ini
+
                         System.IO.File.Delete(file); // Delete all files in the startup folder
                         OutputManager.Log($"Deleted file in startup folder: {file}");
                     }

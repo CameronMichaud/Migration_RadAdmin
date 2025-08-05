@@ -79,7 +79,7 @@ internal class InstallManager
     {
         try
         {
-            // Grab al files in the current directory that has skyview-services*.msi
+            // Grab all files in the current directory that has skyview-services*.msi
             string path = AppDomain.CurrentDomain.BaseDirectory;
             DirectoryInfo directory = new DirectoryInfo(path);
             FileInfo[] files = directory.GetFiles("skyview-services-*.msi");
