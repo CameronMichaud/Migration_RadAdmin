@@ -11,19 +11,9 @@ namespace Migration_RadAdmin.Users
         {
             try
             {
-                // Check if user exists
-                bool user = ProcessManager.RunReturn("powershell.exe", $"Get-LocalUser -Name {userName}");
-
-                if (user)
-                {
-                    // Delete user
-                    ProcessManager.RunDelete("powershell.exe", $"Remove-LocalUser -Name \"{userName}\"");
-                    OutputManager.Log($"User '{userName}' deleted successfully.");
-                }
-                else
-                {
-                    OutputManager.Log($"User '{userName}' not found.");
-                }
+                // Delete user
+                ProcessManager.RunDelete("powershell.exe", $"Remove-LocalUser -Name \"{userName}\"");
+                OutputManager.Log($"User '{userName}' deleted successfully.");
             }
             catch (Exception e)
             {
